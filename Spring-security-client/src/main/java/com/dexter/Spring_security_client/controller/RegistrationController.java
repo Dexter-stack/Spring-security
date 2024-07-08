@@ -1,6 +1,8 @@
 package com.dexter.Spring_security_client.controller;
 
 import com.dexter.Spring_security_client.entity.AppUser;
+import com.dexter.Spring_security_client.entity.VerificationToken;
+import com.dexter.Spring_security_client.event.GenerateNewTokenComplete;
 import com.dexter.Spring_security_client.event.RegistrationCompleteEvent;
 import com.dexter.Spring_security_client.model.UserModel;
 import com.dexter.Spring_security_client.service.UserService;
@@ -45,6 +47,22 @@ public class RegistrationController {
             return "User verified Successfuly";
         }
         return "Bad User";
+    }
+
+    @GetMapping("/resendVerifyToken")
+    public String resendVerification(@RequestParam("token") String oldToken, HttpServletRequest httpServletRequest){
+        VerificationToken verificationToken = userService.generateNewVrificationToken(oldToken);
+        AppUser user = verificationToken.getAppUser();
+
+        publisher.publishEvent(new GenerateNewTokenComplete(verificationToken,applicationUrl(httpServletRequest)));
+//        resendVerificationTokenMail(user, applicationUrl(httpServletRequest));
+        return "Verification token sent";
+
+    }
+
+    private void resendVerificationTokenMail(AppUser user, String s) {
+
+
     }
 
     private String applicationUrl(HttpServletRequest request) {

@@ -1,6 +1,7 @@
 package com.dexter.Spring_security_client.service;
 
 import com.dexter.Spring_security_client.entity.AppUser;
+import com.dexter.Spring_security_client.entity.VerificationToken;
 import com.dexter.Spring_security_client.model.UserModel;
 
 public interface UserService {
@@ -10,4 +11,6 @@ public interface UserService {
     void saveVerificationToken(String token, AppUser appUser);
 
     String validateVerificationToken(String token);
+
+    VerificationToken generateNewVrificationToken(String oldToken);
 }
