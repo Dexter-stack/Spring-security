@@ -1,0 +1,26 @@
+server:
+  port: '8082'
+
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/spring-sec
+    password: dexter
+  application:
+    name: ioc
+  mvc:
+    problem-details:
+      enabled: 'true'
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
