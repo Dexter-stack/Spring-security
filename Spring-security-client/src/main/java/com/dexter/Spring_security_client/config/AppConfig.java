@@ -1,7 +1,9 @@
 package com.dexter.Spring_security_client.config;
 
+import com.dexter.Spring_security_client.repository.UserRepository;
 import com.dexter.Spring_security_client.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class AppConfig {
 
-    private final UserServiceImpl userService;
+
+    private final UserRepository userService;
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(11);
@@ -25,7 +28,7 @@ public class AppConfig {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> userService.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return username -> userService.findByEmail(username);
     }
 
     @Bean
@@ -37,6 +40,7 @@ public class AppConfig {
 
     }
 
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return  configuration.getAuthenticationManager();
     }

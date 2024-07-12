@@ -11,6 +11,7 @@ import com.dexter.Spring_security_client.service.UserService;
 import com.dexter.Spring_security_client.serviceImpl.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -142,7 +143,8 @@ public class RegistrationController {
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(loginRequest);
+            var  user = userService.findUserByEmail(loginRequest.getEmail());
+            return jwtService.generateToken(user);
         } else {
             throw new UsernameNotFoundException("invalid user request !");
         }

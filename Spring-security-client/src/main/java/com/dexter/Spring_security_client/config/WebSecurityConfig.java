@@ -5,6 +5,7 @@ import com.dexter.Spring_security_client.config.jwtConfig.JwtAuthenticationFilte
 import com.dexter.Spring_security_client.serviceImpl.UserServiceImpl;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +36,9 @@ public class WebSecurityConfig {
 
 
 
+    private final   JwtAuthenticationFilter jwtAuthFilter;
+
+    private  final AuthenticationProvider authenticationProvide;
     private static final String [] WHITE_LIST_URLS ={
             "/hello",
             "/register",
@@ -45,8 +49,8 @@ public class WebSecurityConfig {
             "/changePassword",
             "/login"
     };
-    private final JwtAuthenticationFilter jwtAuthFilter;
-    private final AuthenticationProvider authenticationProvide;
+
+
 
 
 
