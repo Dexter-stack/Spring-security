@@ -27,4 +27,6 @@ public interface UserService {
     void changeUserPassword(AppUser appUser, String newPassword);
 
     boolean checkIfValidOldPassword(AppUser user, String oldPassword);
+
+    Optional<AppUser> findByEmail(String email);
 }

@@ -4,6 +4,9 @@ server:
 spring:
   profiles:
     active: dev
+app:
+  secret:
+    key: L3+98VbTpC0EZXaULs5x4zAaIqB7VhKc4AQmJfF6d+E=
 
 ---
 spring:

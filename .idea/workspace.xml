@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59c82cdb-5d7c-4427-81db-a49ce8236a8a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/entity/PasswordResetToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/model/PasswordModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/repository/PasswordResetTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/config/jwtConfig/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/model/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/serviceImpl/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-security-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/entity/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/entity/AppUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/java/com/dexter/Spring_security_client/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-security-client/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-security-client/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +28,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,11 +50,15 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/HP/IdeaProjects/Spring-Security/src/main/java/org/dexter/Main.java&quot;
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/HP/IdeaProjects/Spring-Security/src/main/java/org/dexter/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.dexter.Spring_security_client.entity" />
       <recent name="com.dexter.Spring_security_client.event" />
     </key>
   </component>

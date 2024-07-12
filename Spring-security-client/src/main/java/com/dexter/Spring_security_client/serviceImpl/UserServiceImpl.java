@@ -2,6 +2,7 @@ package com.dexter.Spring_security_client.serviceImpl;
 
 import com.dexter.Spring_security_client.entity.AppUser;
 import com.dexter.Spring_security_client.entity.PasswordResetToken;
+import com.dexter.Spring_security_client.entity.Role;
 import com.dexter.Spring_security_client.entity.VerificationToken;
 import com.dexter.Spring_security_client.model.UserModel;
 import com.dexter.Spring_security_client.repository.PasswordResetTokenRepository;
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
         appUser.setEmail(userModel.getEmail());
         appUser.setFirstName(userModel.getFirstName());
         appUser.setLastName(userModel.getLastName());
-        appUser.setRole("USER");
+        appUser.setRole(Role.USER);
 
         //encrypt pasword before saving
 
@@ -91,6 +92,8 @@ public class UserServiceImpl implements UserService {
         return  userRepository.findByEmail(email);
     }
 
+
+
     @Override
     public void createPasswordResetTokenForUser(AppUser user, String token) {
 
@@ -132,5 +135,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean checkIfValidOldPassword(AppUser user, String oldPassword) {
         return passwordEncoder.matches(oldPassword, user.getPassword());
+    }
+
+    @Override
+    public Optional <AppUser> findByEmail(String email) {
+        return Optional.ofNullable(userRepository.findByEmail(email));
     }
 }

@@ -4,13 +4,20 @@ import com.dexter.Spring_security_client.entity.AppUser;
 import com.dexter.Spring_security_client.entity.VerificationToken;
 import com.dexter.Spring_security_client.event.GenerateNewTokenComplete;
 import com.dexter.Spring_security_client.event.RegistrationCompleteEvent;
+import com.dexter.Spring_security_client.model.LoginRequest;
 import com.dexter.Spring_security_client.model.PasswordModel;
 import com.dexter.Spring_security_client.model.UserModel;
 import com.dexter.Spring_security_client.service.UserService;
+import com.dexter.Spring_security_client.serviceImpl.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -25,6 +32,16 @@ public class RegistrationController {
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private JwtService jwtService;
+
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @GetMapping("/hello")
@@ -119,8 +136,23 @@ public class RegistrationController {
     }
 
 
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest loginRequest) {
 
-    private String passwordResetTokenMail(AppUser user, String applicationUrl,String token){
+        final Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+        if (authentication.isAuthenticated()) {
+            return jwtService.generateToken(loginRequest);
+        } else {
+            throw new UsernameNotFoundException("invalid user request !");
+        }
+
+    }
+
+
+
+
+        private String passwordResetTokenMail(AppUser user, String applicationUrl,String token){
         String url =  applicationUrl+"/savePassword?token="+token;
 
 
@@ -133,5 +165,7 @@ public class RegistrationController {
 
     private String applicationUrl(HttpServletRequest request) {
         return  "http://"+ request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+
     }
+
 }
